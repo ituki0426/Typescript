@@ -63,7 +63,12 @@ let numObj = new Klass<number>(5);
 numObj.getItem(); //=> 5
 ```
 ```typescript
-/** A class definition with a generic parameter */class Queue<T> {  private data = [];  push(item: T) { this.data.push(item); }  pop(): T | undefined { return this.data.shift(); }}/** Again sample usage */const queue = new Queue<number>();queue.push(0);queue.push("1"); // ERROR : cannot push a string. Only numbers allowed// ^ if that error is fixed the rest would be fine too
+/** A class definition with a generic parameter */
+class Queue<T> {
+private data = [];  push(item: T) { this.data.push(item); }  pop(): T | undefined { return this.data.shift(); }}
+/** Again sample usage */
+const queue = new Queue<number>();queue.push(0);queue.push("1"); 
+ERROR : cannot push a string. Only numbers allowed// ^ if that error is fixed the rest would be fine too
 ```
 インターフェイスを用いた例
 
