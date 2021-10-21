@@ -15,6 +15,9 @@ test<string>("文字列"); //=> 文字列
 test("文字列２"); //=> "文字列２"
 ```
 
+______________________________________________________________________________________________________
+
+
 ```typescript
 function reverse<T>(items: T[]): T[] {    
 var toreturn = [];    
@@ -62,6 +65,9 @@ strObj.getItem(); //=> "文字列１"
 let numObj = new Klass<number>(5);
 numObj.getItem(); //=> 5
 ```
+
+________________________________________________________________________________________________________________________________
+
 ```typescript
 /** A class definition with a generic parameter */
 class Queue<T> {
@@ -70,6 +76,7 @@ private data = [];  push(item: T) { this.data.push(item); }  pop(): T | undefine
 const queue = new Queue<number>();queue.push(0);queue.push("1"); 
 ERROR : cannot push a string. Only numbers allowed// ^ if that error is fixed the rest would be fine too
 ```
+
 インターフェイスを用いた例
 
 ```typescript
