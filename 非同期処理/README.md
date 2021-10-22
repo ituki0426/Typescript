@@ -12,5 +12,18 @@ typeには戻り値の型を代入する。
 
 また、then()の()内には、前の関数なり定数がresolveした値が代入される。
 
+```typescript
+function request():Promise<number>{
+	return new Promise((resolve)=>{
+		resolve(1)
+	})
+}
+request()
+.then((result)=>{
+	console.log(result)
+})
+```
 
+# async await
 
+asyncを使うことで上のコードをより簡単に書くことが出来ます。
