@@ -27,3 +27,13 @@ request()
 # async await
 
 asyncを使うことで上のコードをより簡単に書くことが出来ます。
+
+```typescript
+async function requestAsnc():Promise<number> {
+	return 1;
+}
+requestAsnc()
+.then((result)=>{
+	console.log(result)
+})
+```
