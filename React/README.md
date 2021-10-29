@@ -10,3 +10,24 @@ type AppProps = { message: string }; // interfaceでもよい
 const getTriangle = (prop) =>{
 }
 ```
+
+# constで定義した関数のrender
+
+```<関数コンポーネント名/>```
+で実行する。
+
+```typescript
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+// 型のインポート
+import type { VFC } from "react"
+
+// 実際の使用例
+const SampleComponent: VFC = () => {
+  return <div>Hello TypeScript!</div>
+}
+
+ReactDOM.render(
+	<SampleComponent/>,document.getElementById("main")
+)
+```
