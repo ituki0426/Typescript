@@ -36,7 +36,7 @@ ReactDOM.render(
 
 直接ReactDom.render内で引数を指定することはできない
 
-```typescirpt
+```typescript
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 // 型のインポート
