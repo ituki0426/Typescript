@@ -31,3 +31,42 @@ ReactDOM.render(
 	<SampleComponent/>,document.getElementById("main")
 )
 ```
+
+引数付きの場合
+
+直接ReactDom.render内で引数を指定することはできない
+
+```typescirpt
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+// 型のインポート
+import App from "./App"
+import type { VFC } from "react"
+type Welcom_Props={
+	message:string
+}
+// 実際の使用例
+const SampleComponent: VFC = ({message}:Welcom_Props) => {
+  return <div>Hello {message}</div>
+}
+function Welcome({message}:Welcom_Props){
+	return <h1>Hello,{message}</h1>
+}
+const Right:VFC=()=>{
+	return(
+		<div>
+			<Welcome message="Sara" />
+			<Welcome message="Gafa" />
+			<Welcome message="Kota" />
+		</div>
+	)
+}
+ReactDOM.render(
+	<Right />,document.getElementById("main")
+)
+
+ReactDOM.render(<App />,document.getElementById("app"))
+```
+
+# Propsについて
+
