@@ -28,4 +28,13 @@
 
 (1)useEffect/useLayoutEffect
 
+useEffect：useEffectを使うと、useEffectに渡された関数はレンダーの結果が場面に反映された後に動作します。つまり、useEffectとは、「関数の実行タイミングをReactのレンダリング後まで遅らせるHook」です。
+
+```typescript
+useEffect(() => {
+  /* 第1引数には実行させたい副作用関数を記述*/
+},[依存する変数の配列]) // 第2引数には副作用関数の実行タイミングを制御する依存データを記述
+```
+
+
 (2)useDebugValue
