@@ -3,7 +3,34 @@
 (1)useState
 
 (2)useContext
+useContextとは
 
+もちろん明示的に型を指定することもできる。
+
+・React.createContext
+
+型指定しない場合
+
+```jsx
+const MyContext = React.createContext(defaultValue);
+```
+
+型指定する場合
+
+```jsx
+const MyContext = React.createContext<型名>(defaultValue);
+```
+
+
+・Context.Provider
+
+```jsx
+<MyContext.Provider value={/* 何らかの値 */}>
+```
+
+・Context.Consumer
+
+例１
 ```typescript
 import * as React from 'react'
 import * as ReactDOM from 'react-dom';
@@ -48,8 +75,29 @@ ReactDOM.render(
 	document.getElementById('root')
 )
 ```
+例２
 
-(3)useMe
+```typescript
+import React, { createContext, useContext } from "react";
+
+type Theme = "light" | "dark";//Themeには、lightかdarkのどちらかしか入らない。
+// createContextの初期値の型から推論されるが
+// 明示的に指定する事も可能
+const ThemeContext = createContext<Theme>("dark");
+
+const App = () => (
+  <ThemeContext.Provider value="dark">
+    <MyComponent />
+  </ThemeContext.Provider>
+);
+
+const MyComponent = () => {
+  const theme = useContext(ThemeContext);
+  return <div>The theme is {theme}</div>;
+};
+```
+
+(3)useMemo
 
 # 型付けが必須のフック
 
