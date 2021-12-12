@@ -50,5 +50,5 @@ const reducer_2=(state:STORE,action:ACTIONTYPE_1)=>{
 }
 console.log(reducer(count,Inc).count)
 console.log(reducer_2(count,Inc).count)
-
+//結果は同じになる
 ```
