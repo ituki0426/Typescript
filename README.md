@@ -10,6 +10,22 @@ type alias:　型の別名の意
 
 例
 ```typescript
+type Color = 'red'//typeで文字列を型にすると、それ以外を受け付けなくなる。
+let x = Math.random() < .5
+if(x){
+	type Color='blue'
+	let b:Color='blue'
+	console.log(b);
+}else{
+	let c:Color='red'//
+	console.log(c)
+}
+
+
+```
+
+例
+```typescript
 type STORE={
 	count:number
 }
