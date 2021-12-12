@@ -7,6 +7,54 @@
 ```typescript
 type alias:　型の別名の意
 ```
+合併型と交差型
+
+AとBという二つのものがある場合、それらの合併とはそれらの和（A,B,またはその両方に含まれるすべての物）を指し、交差とは、それらごk兆通して持つもの（AとBの両方に含まれるすべての物）を指します
+
+TSでは、合併を表すには「|」、交差を表すには、「&」を用いる。
+
+合併型を持つ値は、必ずしもどちらか1つのメンバーであるとは限らない。実際には、同時に両方のメンバーになれるのです。
+
+例
+```typescript
+type Cat ={
+	name:string,
+	purrs:boolean
+}
+type Dog={
+	name:string,
+	barks:boolean,
+	wags:boolean
+}
+type CatOrDogOrBoth=Cat|Dog
+type CatandDog=Cat&Dog
+let a: CatOrDogOrBoth={
+	name:"Bonkers",
+	purrs:true
+}
+a={
+	name:"Bonkers",
+	barks:true,
+	wags:false
+}
+a={
+	name:"Bonkers",
+	purrs:true,
+	barks:true,
+	wags:false
+}
+```
+では、これはどうでしょうか？
+
+```typescript
+function(a:string,b:naumber){
+   return a || b
+}
+```
+
+aがtrueとみなされる値であれば、戻り値の型はstringになり、そうで開ければnumberになる。
+
+すなわち、 string | number　です。
 
 例
 ```typescript
