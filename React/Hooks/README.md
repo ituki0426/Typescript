@@ -4,6 +4,51 @@
 
 (2)useContext
 
+```typescript
+import * as React from 'react'
+import * as ReactDOM from 'react-dom';
+import { useState,useEffect,useContext } from 'react'
+//TSでcontestを使うにはReact.createContext必要。ただし、型の指定が面倒くさい
+const Name=React.createContext('');
+const TextOutput:React.FC=()=>{
+	const name=useContext(Name);
+	return(
+		<p>Hello,{name}</p>
+	)
+}
+const Space:React.FC=()=>{
+	return(
+		<TextOutput />
+	)
+}
+const TextInpu=()=>{
+	const [str,setStr]=useState('初期値');//Nameを初期化している。
+	useEffect(()=>{
+		document.title=`input is ${str}!`
+	});
+	return(
+		<div>
+			<form>
+				<label>
+					入力欄<br />
+					<textarea
+					value={str}
+					onChange={event=>setStr(event.target.value)}
+					/>
+				</label>
+			</form>
+			<Name.Provider value={str}>
+				<Space />
+			</Name.Provider>
+		</div>
+	)
+}
+ReactDOM.render(
+	<TextInpu />,
+	document.getElementById('root')
+)
+```
+
 (3)useMe
 
 # 型付けが必須のフック
