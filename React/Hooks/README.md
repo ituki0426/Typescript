@@ -24,11 +24,27 @@ const MyContext = React.createContext<型名>(defaultValue);
 
 ・Context.Provider
 
+プロバイダーコンポーネントはvalueプロパティを受け取り、これが子孫コンシューマーコンポーネントに渡されます。
+
+一つのプロバーダーは複数のコンシューマと接続することが出来、プロバイダはネスとしてツリー内のより深い位置で値を上書きすることが出来る。
+
+
+※プロバイダの子孫のすべてのコンシューマはプロバイダのvalueプロパティが変更されるたびに再レンダーされる。
+
 ```jsx
 <MyContext.Provider value={/* 何らかの値 */}>
 ```
 
 ・Context.Consumer
+
+コンテクストの変更を購読するReactコンポーネントです。このコンポーネントを使うことで、関数コンポーネント内でコンテクストを購読することが出来る。
+
+
+```jsx
+<MyContext.Consumer>
+  {value => /* コンテクストの値に基づいて何かをレンダーします */}
+</MyContext.Consumer>
+```
 
 例１
 ```typescript
