@@ -100,6 +100,71 @@ export default App;
 子要素の``````と``````は値の変更をサブスクライブし、再レンダリングされることを確認できる。
 
 # コード２
-```
+
+AppContext.tsx
+```tsx
+mport * as React from "react";
+
+export interface AppContextInterface {
+  name: string;
+  author: string;
+  url: string;
+}
+
+const ctxt = React.createContext<AppContextInterface | null>(null);
+
+export const AppContextProvider = ctxt.Provider;
+
+export const AppContextConsumer = ctxt.Consumer;
+
 ```
 
+PostInfo.tsx
+```tsx
+import * as React from "react";
+import { AppContextConsumer } from "./AppContext";
+
+export const PostInfo = () => (
+  <AppContextConsumer>
+    {appContext =>
+      appContext && (
+        <div>
+          Name: {appContext.name} <br />
+          Author: {appContext.author} <br />
+          Url: {appContext.url}
+        </div>
+      )
+    }
+  </AppContextConsumer>
+);
+```
+
+index.tsx
+```tsx
+import * as React from "react";
+import { render } from "react-dom";
+import { AppContextInterface, AppContextProvider } from "./AppContext";
+import { PostInfo } from './PostInfo';
+
+const sampleAppContext: AppContextInterface = {
+  name: "Using React Context in a Typescript App",
+  author: "thehappybug",
+  url: "http://www.example.com"
+};
+
+const Post = () => (
+  <div>
+    <h2>Post info</h2>
+    <PostInfo />
+  </div>
+);
+
+export const App = () => (
+  <AppContextProvider value={sampleAppContext}>
+    <Post />
+  </AppContextProvider>
+);
+
+render(<App />, document.getElementById("root"));
+
+```
