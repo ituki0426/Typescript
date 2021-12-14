@@ -1,3 +1,11 @@
+# eの型付け
+
+```tsx
+const handleOnClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+	  e.preventDefault();
+	};
+```
+
 # 関数のrender
 
 普通の関数と同じく、引数を片付けする必要がある。
