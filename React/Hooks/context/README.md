@@ -438,3 +438,33 @@ const App: React.FC = () => {
 
 export default App;
 ```
+
+# useContextに型付けしたい
+
+```tsx
+type TTopics = "general" | "randam";
+
+interface ISendMsg {
+    from: string;
+    msg: string;
+    topic: TTopics;
+}
+type TChatIitemState = {
+    from: string,
+    msg: string,
+}
+type TChatState = {
+    [key in TTopics]: TChatIitemState[];
+}
+interface IState {
+    allChats?: TChatState;
+    sendChatAction?: (value: ISendMsg) => void;
+    users?: string[];
+}
+const CTX = React.createContext<IState>({});
+
+const { allChats, sendChatAction, users } = React.useContext<IState>(CTX)
+
+//上のallChats、sendChatAction、usersがそれぞれIState内の3つに対応している。
+//つまり、useContextに複数の要素を持つ方を定義する場合は、その要素の数に応じた定数の数を定義する。
+```
