@@ -227,3 +227,53 @@ const App = () => {
 ReactDOM.render(<App />, document.getElementById("root"));
 
 ```
+
+# コード４
+
+```tsx
+import React, { useState, useContext } from 'react'
+
+//親コンポーネント
+
+//useContextの初期値を設定。
+const CountContext = React.createContext({} as {
+  count: number
+  setCount: React.Dispatch<React.SetStateAction<number>>
+})
+
+const Parent: React.FC = () => {
+    const [count, setCount] = useState(0)
+    return (
+        <>
+          //孫コンポーネントを含む子コンポーネントをuseContextで定めた変数で囲む。
+          //valueでcountとsetCountをオブジェクトで渡している点に注意
+          <CountContext.Provider value={{ count, setCount }}>
+           <Child />
+          </CountContext.Provider >
+        </>
+    )
+}
+
+//子コンポーネント
+//特に変更なし
+const Child: React.FC = () => {
+    return (
+        <>
+         <GrandChild />
+        </>
+    )
+}
+
+//孫コンポーネント
+const GrandChild: React.FC = () => {
+    // 親要素で指定した変数を受け取る
+    const {count, setCount} = useContext(CountContext)
+    return (
+        <>
+         //親要素のuseStateがそのまま使える！
+         <button onClick={() => setCount(count + 1)}>+</button>
+         <button onClick={() => setCount(count - 1)}>-</button>
+        </>
+    )
+}
+```
