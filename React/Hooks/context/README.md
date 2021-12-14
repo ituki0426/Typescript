@@ -1,3 +1,130 @@
+# コード０
+
+```tsx
+import ComponentB from "./ComponetB";
+import * as React from 'react'
+const ComponentA:React.FC=()=>{
+	return(
+		<div>
+			<p>ComponentA</p>
+			<ComponentB />
+		</div>
+	)
+}
+export default ComponentA
+```
+
+```tsx
+import ComponentC from "./ComponentC";
+import * as React from 'react'
+const ComponentB:React.FC=()=>{
+	return(
+		<div>
+		<p>ComponentB</p>
+		<ComponentC />
+	</div>
+	)
+}
+export default ComponentB
+```
+
+```tsx
+import * as React from 'react'
+import { useContext } from 'react'
+import { UserCount } from './App'
+const ComponentC:React.FC =()=>{
+	const count:number=useContext(UserCount)
+	return(
+		<div>
+		<p>ComponentC</p>
+		<p>{count}</p>
+	</div>
+	)
+}
+export default ComponentC
+```
+
+また、上のコードをuseStateと一緒につかうと以下のようなこともできる。
+
+```tsx
+import ComponentA from "./ComponentA"
+import * as React from 'react'
+import { count } from "console"
+export const UserCount=React.createContext(null)
+const App:React.FC=()=>{
+	const [count,setCount]=React.useState(100);
+	const value={
+		count,
+		setCount,
+	};
+	return(
+		<div>
+			<h1>Learn useContext</h1>
+			<UserCount.Provider value={value}>
+			<p>{value.count}</p>
+			<ComponentA />
+			</UserCount.Provider>
+		</div>
+	);
+}
+export default App
+```
+
+```tsx
+import ComponentB from "./ComponetB";
+import * as React from 'react'
+import { UserCount } from './App'
+const ComponentA:React.FC=()=>{
+	const {count,setCount}=React.useContext(UserCount)
+	return(
+		<div>
+			<p>ComponentA</p>
+			<button onClick={()=>setCount(count+1)}>+</button>
+		    <button onClick={()=>setCount(count-1)}>-</button>
+			<ComponentB />
+		</div>
+	)
+}
+export default ComponentA
+```
+
+
+```tsx
+import ComponentC from "./ComponentC";
+import * as React from 'react'
+import { UserCount } from './App'
+const ComponentB:React.FC=()=>{
+	const {count,setCount}=React.useContext(UserCount)
+	return(
+		<div>
+		<p>ComponentB</p>
+		<button onClick={()=>setCount(count+1)}>+</button>
+		<button onClick={()=>setCount(count-1)}>-</button>
+		<ComponentC />
+	</div>
+	)
+}
+export default ComponentB
+```
+
+```tsx
+import * as React from 'react'
+import { useContext } from 'react'
+import { UserCount } from './App'
+const ComponentC:React.FC =()=>{
+	const {count,setCount}=useContext(UserCount)
+	return(
+		<div>
+		<p>ComponentC</p>
+		<p>{count}</p>
+		<button onClick={()=>setCount(count+1)}>+</button>
+		<button onClick={()=>setCount(count-1)}>-</button>
+	</div>
+	)
+}
+export default ComponentC
+```
+
 # コード１
 
 context.tsx
