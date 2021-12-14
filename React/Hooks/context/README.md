@@ -1,3 +1,75 @@
+# {children}とは
+```tsx
+import * as React from 'react'
+import * as ReactDOM from 'react-dom'
+interface IThemeContext {
+	dark: boolean;
+	toggleDark?: () => void;
+  }
+  
+  const defaultState = {
+	dark: false,
+  };
+  
+  const ThemeContext = React.createContext<IThemeContext>(defaultState);
+  
+  const ThemeProvider: React.FC = ({ children }) => {
+	const [dark, setDark] = React.useState(defaultState.dark);
+  
+	const toggleDark = () => {
+	  setDark(!dark);
+	};
+  //<.Provider value={}></.Provider>の中に直接タグを書き込むほかに、下のように{children}とすれば
+  //、<ThemeProvider></ThemeProvider>の中で、useContextが使える。
+
+	return (
+	  <ThemeContext.Provider
+		value={{
+		  dark,
+		  toggleDark,
+		}}
+	  >
+		{children}
+	  </ThemeContext.Provider>
+	);
+  };
+  
+  const ToggleDarkMode = () => {
+	const { dark, toggleDark } = React.useContext(ThemeContext);
+	const handleOnClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+	  e.preventDefault();
+	  toggleDark();
+	};
+	if(dark==false){
+		return (
+			<>
+			  <h1>{dark ? "🌙" : "🌞"}</h1>
+			  <button onClick={handleOnClick}>To dark mode</button>
+			</>
+		  );
+	}else{
+		return (
+			<>
+			  <h1>{dark ? "🌙" : "🌞"}</h1>
+			  <button onClick={handleOnClick}>To light mode</button>
+			</>
+		  );
+	}
+  };
+  
+  const App = () => {
+	return (
+	  <ThemeProvider>
+		<ToggleDarkMode />
+	  </ThemeProvider>
+	);
+  };
+ReactDOM.render(
+	<App />,
+	document.getElementById("root")
+	);
+```
+
 # コード０
 
 ```tsx
