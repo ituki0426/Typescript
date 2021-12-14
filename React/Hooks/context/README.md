@@ -277,3 +277,37 @@ const GrandChild: React.FC = () => {
     )
 }
 ```
+
+# コード５
+```tsx
+import React, { useContext } from "react";
+import "./App.css";
+
+const ThemeContext = React.createContext("light");
+
+const ThemedButton: React.FC = props => {
+  const theme = useContext(ThemeContext);
+
+  return <button className={theme}>Click me</button>;
+};
+
+const Toolbar: React.FC = props => (
+  <div>
+    Hello, TypeScript & React. <ThemedButton />
+  </div>
+);
+
+const App: React.FC = () => {
+  return (
+    <ThemeContext.Provider value="dark">
+      <div className="app">
+        <header className="app-header">
+          <Toolbar />
+        </header>
+      </div>
+    </ThemeContext.Provider>
+  );
+};
+
+export default App;
+```
