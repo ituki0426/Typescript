@@ -520,6 +520,7 @@ export default App;
 ```
 
 # useContextに型付けしたい
+
 1.
 
 Contextの初期化をしない場合、<Partial>を使う
@@ -540,8 +541,55 @@ const defaultState = {
 
 const ThemeContext = React.createContext<IThemeContext>(defaultState);
 ```
-
+	
 3.
+```tsx
+<.Provider>
+	value={
+	
+	}
+</.Provider>
+
+```
+	valueの型は、createContextの時に使用した型。
+例
+	```tsx
+	interface IThemeContext {
+        dark: boolean;
+        toggleDark?: () => void;
+}
+
+         const defaultState = {
+         dark: false,
+};
+
+         const ThemeContext = React.createContext<IThemeContext>(defaultState);
+	```
+	
+	
+	```tsx
+	import React from 'react';
+        import ThemeContext from '../context/ThemeContext';
+// ...
+
+        export const App = () => {
+  // ...
+
+  return (
+    <ThemeContext.Provider
+      value={{
+        dark: false,
+        toggleDark: () => console.log('toggle'),
+      }}
+    >
+      <ToggleDarkMode />
+      {/*...*/}
+    </ThemeContext.Provider>
+  );
+};
+	```
+
+4.
 ```tsx
 type TTopics = "general" | "randam";
 
