@@ -201,9 +201,10 @@ export default ComponentC
 
 context.tsx
 ```typescript
-import React from 'react';
-
-export const SampleTextContext = React.createContext("aaaaa");
+import * as React from 'react';
+interface ITemeContext{
+}
+export const SampleTextContext = React.createContext<Partial<ITemeContext>>({});
 ```
 
 ・関数コンポーネントでの利用
