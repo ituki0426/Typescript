@@ -271,6 +271,8 @@ ________________________________________________________________________________
 
 ここでは、上で作成した2つのコンポーネントをProviderで包んだうえでさらに、Contextの値を変更するボタンを作成してみます。
 
+
+
 App.tsx
 ```tsx
 import React from 'react';
@@ -281,11 +283,16 @@ function App() {
   const [sampleText, setSampleText] = React.useState("aaaa");
 
   return (
+  //.Providerタグで囲まれた関数コンポーネント、またはクラス内から、SampleTextContextにアクセスできる。
     <SampleTextContext.Provider value={sampleText}>
       <button onClick={()=>{setSampleText(sampleText + "a")}}>ボタン</button>
+  
       <div className="App">
+      
         <MyClassComponent />
+	
         <MyFunctionalComponent />
+	
       </div>
     </SampleTextContext.Provider>
   );
