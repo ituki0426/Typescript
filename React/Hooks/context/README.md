@@ -553,7 +553,7 @@ const ThemeContext = React.createContext<IThemeContext>(defaultState);
 ```
 	valueの型は、createContextの時に使用した型。
 例
-	```tsx
+```tsx
 	interface IThemeContext {
         dark: boolean;
         toggleDark?: () => void;
@@ -564,10 +564,10 @@ const ThemeContext = React.createContext<IThemeContext>(defaultState);
 };
 
          const ThemeContext = React.createContext<IThemeContext>(defaultState);
-	```
+```
 	
 	
-	```tsx
+```tsx
 	import React from 'react';
         import ThemeContext from '../context/ThemeContext';
 // ...
@@ -587,7 +587,7 @@ const ThemeContext = React.createContext<IThemeContext>(defaultState);
     </ThemeContext.Provider>
   );
 };
-	```
+```
 
 4.
 ```tsx
