@@ -74,6 +74,10 @@ const reducer = (state, action) => {
             return {count: state.count + action.payload}
         case 'DECREMENT':
             return {count: state.count - action.payload}
+        case 'DOUBLE_INCRE':
+            return {count: state.count * 2}
+        case 'RESET':
+            return {count: 0}
         default:
             return state
     }
