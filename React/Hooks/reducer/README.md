@@ -26,7 +26,7 @@ const sum = test.reduce(callback_func)
 console.log(sum) 
 ```
 
-'''tsx
+```tsx
 const initialState = { count: 0 };
 
 type ACTIONTYPE =
