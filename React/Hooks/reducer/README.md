@@ -26,6 +26,8 @@ const sum = test.reduce(callback_func)
 console.log(sum) 
 ```
 
+# ケース1
+
 ```tsx
 const initialState = { count: 0 };
 
@@ -59,6 +61,7 @@ function Counter() {
   );
 }
 ```
+# ケース2
 
 ```tsx
 import React, { useReducer } from 'react';
