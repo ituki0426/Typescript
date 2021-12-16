@@ -25,6 +25,13 @@ const sum = test.reduce(callback_func)
 
 console.log(sum) 
 ```
+useReducer()について。
+
+useRducerの第1引数＝dispatch()によって呼び出される関数
+
+また、dispatch()によって呼び出される関数内では、switch文が用いられることが多い。
+
+useReducerの第2引数＝初期状態
 
 # ケース1
 
