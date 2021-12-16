@@ -154,7 +154,8 @@ keys = 'old'; // OK
 keys = 'xxx'; // Error: Type '"xxx"' is not assignable to type '"name" | "old"'.
 ```
 
-```tsxtype Person={
+```tsx
+type Person={
 	name:string;
 	old:number;
 }
