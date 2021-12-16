@@ -116,3 +116,16 @@ console.log(reducer(count,Inc).count)
 console.log(reducer_2(count,Inc).count)
 //結果は同じになる
 ```
+## インデックスネグスチャ
+```tsx
+let obj:{
+	[key:string]:string//インデックスネグスチャ
+}
+obj={
+	id:"123",
+	token:"hogetoken",
+	name:"hogename"
+}
+console.log(obj.id);//123
+```
+## タプル
