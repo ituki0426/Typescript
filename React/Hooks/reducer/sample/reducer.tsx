@@ -69,6 +69,7 @@ export type ShoppingCartActions = ActionMap<
   ShoppingCartPayload
 >[keyof ActionMap<ShoppingCartPayload>];
 
+//dispacth()によって呼び出される関数
 export const shoppingCartReducer = (
   state: number,
   action: ProductActions | ShoppingCartActions
