@@ -22,18 +22,12 @@ const initialState = {
   shoppingCart: 0
 };
 
-const AppContext = createContext<{
-  state: InitialStateType;
-  dispatch: Dispatch<ProductActions | ShoppingCartActions>;
-}>({
+const AppContext = createContext<{state: InitialStateType;dispatch: Dispatch<ProductActions | ShoppingCartActions>;}>({
   state: initialState,
   dispatch: () => null
 });
 
-const mainReducer = (
-  { products, shoppingCart }: InitialStateType,
-  action: ProductActions | ShoppingCartActions
-) => ({
+const mainReducer = ({ products, shoppingCart }: InitialStateType,action: ProductActions | ShoppingCartActions)=>({
   products: productReducer(products, action),
   shoppingCart: shoppingCartReducer(shoppingCart, action)
 });
