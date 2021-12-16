@@ -16,6 +16,7 @@ const List = () => {
     name: "",
     price: 0
   });
+  //createContextで生成し、それを別のファイル等でuseContextすれば使える。
   const { state ,dispatch } = React.useContext(AppContext);
 
   const handleForm = (type: string, value: string) => {
