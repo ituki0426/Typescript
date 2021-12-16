@@ -69,7 +69,8 @@ export type ShoppingCartActions = ActionMap<
   ShoppingCartPayload
 >[keyof ActionMap<ShoppingCartPayload>];
 
-//dispacth()によって呼び出される関数
+//dispacth()によって呼び出される関数。
+//ほかのファイル等で、useRedcuer(shoppingCartReducer,初期値);が実行される。
 export const shoppingCartReducer = (
   state: number,
   action: ProductActions | ShoppingCartActions
