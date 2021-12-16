@@ -117,6 +117,12 @@ console.log(reducer_2(count,Inc).count)
 //結果は同じになる
 ```
 ## インデックスネグスチャ
+
+構文：```[key:T]:U```
+
+これはオブジェクトが複数のkey(型T)を含む可能性があることを示す。
+
+
 ```tsx
 let obj:{
 	[key:string]:string//インデックスネグスチャ
