@@ -135,3 +135,34 @@ obj={
 console.log(obj.id);//123
 ```
 ## タプル
+
+## keyof演算子
+
+型コンテキストでkeyofを利用するとオブジェクトのプロパテでィ名を抽出して文字列リテラルのユニオン型を取得できる。
+
+```tsx
+type Person = {
+  name: string;
+  old: number;
+};
+
+type Keys = keyof Person; // "name" | "old"
+
+let keys: Keys;
+keys = 'name'; // OK
+keys = 'old'; // OK
+keys = 'xxx'; // Error: Type '"xxx"' is not assignable to type '"name" | "old"'.
+```
+
+```tsxtype Person={
+	name:string;
+	old:number;
+}
+type Keys=keyof Person;// "name" | "old"
+let keys:Keys[]=[];
+
+keys.push("name");
+keys.push("old");
+keys.push("hello")//error
+console.log(...keys);//name old　と出力される。
+```
