@@ -12,7 +12,8 @@ type ActionMap<M extends { [index: string]: any }> = {
 export enum Types {
   Create = "CREATE_PRODUCT",
   Delete = "DELETE_PRODUCT",
-  Add = "ADD_PRODUCT"
+  Add = "ADD_PRODUCT",
+  Rull="RULL_PRODUCT"
 }
 
 // Product
@@ -63,6 +64,7 @@ export const productReducer = (
 
 type ShoppingCartPayload = {
   [Types.Add]: undefined;
+  [Types.Rull]:undefined;
 };
 
 export type ShoppingCartActions = ActionMap<
@@ -78,6 +80,8 @@ export const shoppingCartReducer = (
   switch (action.type) {
     case Types.Add:
       return state + 1;
+     case Types.Rull:
+      return state-1;
     default:
       return state;
   }
