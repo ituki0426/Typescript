@@ -1,3 +1,12 @@
+/*
+const AppContext = createContext<{
+  state: InitialStateType;
+  dispatch: Dispatch<ProductActions | ShoppingCartActions>;
+}>({
+  state: initialState,
+  dispatch: () => null
+});
+*/
 import React from "react";
 import { AppContext } from "./context";
 import { Types } from "./reducers";
