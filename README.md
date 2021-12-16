@@ -167,3 +167,37 @@ keys.push("old");
 keys.push("hello")//error
 console.log(...keys);//name old　と出力される。
 ```
+
+## in
+
+```tsx
+type ActionMap<M extends { [index: string]: any }> = {
+  [Key in keyof M]: M[Key] extends undefined
+    ? {
+        type: Key;
+      }
+    : {
+        type: Key;
+        payload: M[Key];
+      }
+};
+
+type ProductPayload = {
+  [Types.Create]: {
+    id: number;
+    name: string;
+    price: number;
+  };
+  [Types.Delete]: {
+    id: number;
+  };
+};
+type ProductType = {
+  id: number;
+  name: string;
+  price: number;
+};
+export type ProductActions = ActionMap<ProductPayload>[keyof ActionMap<
+  ProductPayload
+>];
+```
