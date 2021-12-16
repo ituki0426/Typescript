@@ -16,6 +16,15 @@ const Products = () => {
       >
         click
       </button>
+       <button
+        onClick={() => {
+          dispatch({
+            type: Types.Rull
+          });
+        }}
+      >
+        -
+      </button>
       {state.shoppingCart}
     </div>
   );
