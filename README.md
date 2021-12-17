@@ -178,17 +178,16 @@ console.log((func3(st1,st2,st3)));
 console.log(...func3(st1,st2,st3))
 ```
 
+## ジェネリクス型
 ## タプル
 
 タプルは配列の各要素の数と型を定義できる。
 
 ```tsx
-function bind<T,U extends any[],R>(
-	func:(arg1:T,...rest:U)=>R,
-	value:T,
-):((...args:U)=>R){
+//bind()は引数にfunc(引数に二つの値をとる、R型の値を返す)関数と、また戻り値に
+//...を使っているため、型は配列でなければならない。よって、...args:Uとなり、Uはany型の配列である。
+function bind<T,U extends any[],R>(func:(arg1:T,...rest:U)=>R,value:T,):((...args:U)=>R){
 	return (...args:U)=>func(value,...args);
-
 }
 const add = (x: number, y: number) => x + y;
 
