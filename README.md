@@ -252,3 +252,34 @@ export type ProductActions = ActionMap<ProductPayload>[keyof ActionMap<
   ProductPayload
 >];
 ```
+
+## オプショナルチェイニング
+
+オブジェクトのプロパティで、nullやundefinedのチェックに「？」を使うことで、ぷろぱてぃがnullがundefinedの場合は、次のプロパティにはアクセスせず、undefinedを返す。
+
+```tsx
+type Foo={
+	bar?:{
+		baz?:string
+	}
+}
+const foo1:Foo={
+	bar:{
+		baz:"hoge"
+	}
+}
+const foo2:Foo={
+}
+const getHoge=(foo:Foo)=>{
+	if(foo.bar?.baz){
+		console.log(foo.bar.baz)
+	}
+}
+const getHoge_mis=(foo:Foo)=>{
+	console.log(foo.bar?.baz)
+}
+getHoge(foo1);//hoge
+getHoge_mis(foo1);//hoge
+getHoge(foo2);//undefinedを返す。
+getHoge_mis(foo2);//何も返さない
+```
