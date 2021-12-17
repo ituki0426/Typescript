@@ -134,7 +134,58 @@ obj={
 }
 console.log(obj.id);//123
 ```
+## 配列
+
+配列定義方法：T[]とArrayは同義
+
+```tsx
+const even1:number[]=[2,3,4]
+even1.push(3);
+console.log(...even1);//2,3,4,3
+const even2:Array<number>=[2,3,4]
+even2.push(3);
+console.log(...even2)//2,3,4,3
+```
+
+合併型も使える
+
+## 可変長引数（タプルパラメーター）
+
+```tsx
+const func3=(...args:string[]):string[]=>{
+	return args
+}
+
+const st1:string='Hello'
+
+const st2:string='wolrd'
+
+const st3:string='hogehoge'
+
+console.log((func3(st1,st2,st3)));
+
+console.log(...func3(st1,st2,st3))
+```
+
 ## タプル
+
+タプルは配列の各要素の数と型を定義できる。
+
+```tsx
+function bind<T,U extends any[],R>(
+	func:(arg1:T,...rest:U)=>R,
+	value:T,
+):((...args:U)=>R){
+	return (...args:U)=>func(value,...args);
+
+}
+const add = (x: number, y: number) => x + y;
+
+const add1 = bind(add, 1);
+
+console.log(add1(5)); // 6
+
+```
 
 ## keyof演算子
 
